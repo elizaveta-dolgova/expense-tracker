@@ -1,15 +1,14 @@
 .input-filed {
-    margin: 20px 0;
+  margin: 20px 0;
 
-    &__input {
-        margin-top: 5px;
-        display: block;
-        width: 100%;
-        max-width: 400px;
-        padding: 10px 10px;
-        border-radius: 10px;
-        border: solid 1px rgb(204, 199, 199);
-        font-size: 20px;
-    }
+  &__input {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: solid 1px rgb(204, 199, 199);
+    font-size: 20px;
+  }
 }
-

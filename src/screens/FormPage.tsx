@@ -1,10 +1,8 @@
-import React from 'react'
-import NewExpenseForm from '../components/NewExpenseForm'
+import React from 'react';
+import NewExpenseForm from '../components/NewExpenseForm';
 
 const FormPage = () => {
-  return (
-    <NewExpenseForm />
-  )
-}
+  return <NewExpenseForm />;
+};
 
-export default FormPage
+export default FormPage;

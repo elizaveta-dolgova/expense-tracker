@@ -4,17 +4,15 @@ import { ADD_NEW_EXPENSE } from './actions';
 
 export type Expense = {
   name: string;
-  price: string;
+  price: number;
   category: string;
-  date: string
+  date: Date | null;
 };
 
 export type Expenses = Expense[];
 
 function addExpense(state: Expenses, action: AddNewExpenseAction): Expenses {
-  return [
-    ...state, action.payload.expense
-  ]
+  return [...state, action.payload.expense];
 }
 
 const reducer = (state: Expenses = [], action: StoreAction) => {

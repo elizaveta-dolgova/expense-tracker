@@ -16,8 +16,8 @@
 
 // export function* rootThemeSaga() {
 //   yield all([
-//      takeEvery(ADD_NEW_EXPENSE, postNewExpense), 
+//      takeEvery(ADD_NEW_EXPENSE, postNewExpense),
 //      takeEvery(GET_ALL_EXPENSE, getAllExpenses)
 //  ]);
 // }
- export {};
+export {};

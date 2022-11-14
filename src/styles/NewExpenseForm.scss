@@ -1,28 +1,28 @@
 .new-expense {
-    background-color: #F7EEFC;
-    min-height: 100%;
-    color: #212529;
+  background-color: #f7eefc;
+  min-height: 100%;
+  color: #212529;
 
-    &__form {
-        padding: 20px 50px;
-        width: 100%;
-    }
+  &__form {
+    padding: 20px 50px;
+    width: 100%;
+  }
 
-    &__addBtn {
-        padding: 15px 30px;
-        width: 100%;
-        max-width: 400px;
-        border: none;
-        background-color: purple;
-        color: white;
-        font-size: 18px;
-        border-radius: 20px;
-    }
+  &__addBtn {
+    padding: 15px 30px;
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    background-color: purple;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+  }
 }
 
 @media (min-width: 620px) {
-    .new-expense__img-container {
-        margin: unset;
-        max-width: 400px;
-    }
+  .new-expense__img-container {
+    margin: unset;
+    max-width: 400px;
+  }
 }

@@ -22,9 +22,9 @@ export const getStore = (): Store<RootState, StoreAction> => {
   const sagaMiddleware = createSagaMiddleware();
   store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger));
 
-//   if (sagaMiddleware) {
-//     sagaMiddleware.run(rootSaga);
-//   }
+  //   if (sagaMiddleware) {
+  //     sagaMiddleware.run(rootSaga);
+  //   }
 
   return store;
 };

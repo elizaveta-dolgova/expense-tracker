@@ -8,12 +8,12 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='add-new' element={<FormPage />} />
-        <Route path='recent' element={<ListPage />} /> 
+        <Route path="/" element={<MainPage />} />
+        <Route path="add-new" element={<FormPage />} />
+        <Route path="recent" element={<ListPage />} />
       </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

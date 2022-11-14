@@ -1,48 +1,48 @@
 .expense-list {
-    position: relative;
-    background-color: #F7EEFC;
-    padding: 50px;
-    min-height: 100%;
-    color: #212529;
-    
-    &__title {
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+  position: relative;
+  background-color: #f7eefc;
+  padding: 50px;
+  min-height: 100%;
+  color: #212529;
 
-    &__btn {
-        padding: 10px 15px;
-        background-color: purple;
-        color: white;
-        font-size: 14px;
-        border-radius: 15px;
-        border: none;
+  &__title {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
-        &--add {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: block;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 30px;
-        }
-    }
+  &__btn {
+    padding: 10px 15px;
+    background-color: purple;
+    color: white;
+    font-size: 14px;
+    border-radius: 15px;
+    border: none;
 
-    &__list {
-        margin: 30px 0;
+    &--add {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 30px;
     }
+  }
+
+  &__list {
+    margin: 30px 0;
+  }
 }
 
 @media (min-width: 620px) {
-    .expense-list__btn--add {
-        position: unset;
-        margin: 50px;
-    }
+  .expense-list__btn--add {
+    position: unset;
+    margin: 50px;
+  }
 }

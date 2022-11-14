@@ -7,4 +7,4 @@ export const getCurrentExpenses = (state: RootState): Expenses => {
 
 export const getLastExpense = (state: RootState): Expense => {
   return state.expenses[state.expenses.length - 1];
-}
+};

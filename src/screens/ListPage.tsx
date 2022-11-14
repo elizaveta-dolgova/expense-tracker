@@ -1,10 +1,8 @@
-import React from 'react'
-import ExpenseList from '../components/ExpenseList'
+import React from 'react';
+import ExpenseList from '../components/ExpenseList';
 
 const ListPage = () => {
-  return (
-    <ExpenseList />
-  )
-}
+  return <ExpenseList />;
+};
 
-export default ListPage
+export default ListPage;
