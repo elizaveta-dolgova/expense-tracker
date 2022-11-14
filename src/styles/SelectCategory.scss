@@ -1,0 +1,59 @@
+.category-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px 0 30px;
+}
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+}
+.category-btn {
+    margin: 10px 0;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    cursor: pointer;
+
+    &--restaurant {
+        background-image: url('../../public/images/restaurant.png');
+    }
+
+    &--grocery {
+        background-image: url('../../public/images/grocery.png');
+    }
+    &--traveling {
+        background-image: url('../../public/images/traveling.png');
+    }
+    &--transport {
+        background-image: url('../../public/images/transport.png');
+    }
+    &--medicine {
+        background-image: url('../../public/images/medicine.png');
+    }
+    &--pets {
+        background-image: url('../../public/images/pets.png');
+    }
+    &--rent {
+        background-image: url('../../public/images/rent.png');
+    }
+    &--shopping {
+        background-image: url('../../public/images/shopping.png');
+    }
+    &--other {
+        background-image: url('../../public/images/other.png');
+    }
+
+    @media (min-width: 600px) {
+        .category {
+            width: 20%;
+        }
+    }
+
+}
