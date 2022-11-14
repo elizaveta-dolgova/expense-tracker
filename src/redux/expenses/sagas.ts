@@ -1,25 +1,23 @@
 // import { all, put, select, takeEvery } from 'redux-saga/effects';
-// import { setTheme, TOGGLE_THEME } from './actions';
-// import { Theme } from './reducer';
-// import { getCurrentTheme } from './selectors';
+// import { ADD_NEW_EXPENSE, SET_EXPENSES_LIST } from './actions';
+// import type { Expenses } from './reducer';
+// import { getLastExpense } from './selectors';
+// import {postNewExpense, getAllExpenses} from '../../services/api';
 
-// function* toggleTheme() {
-//   const theme: Theme = yield select(getCurrentTheme);
+// function* postNewExpense() {
+//  const lastExpense: Expense = yield select(getLastExpense);
+//  const response = yield call(postNewExpense, lastExpense);
+// }
 
-//   switch (theme) {
-//     case Theme.DARK:
-//       yield put(setTheme(Theme.LIGHT));
-//       break;
-//     case Theme.LIGHT:
-//       yield put(setTheme(Theme.DARK));
-//       break;
-//     default:
-//       yield put(setTheme(Theme.DARK));
-//       break;
-//   }
+// function* getAllExpense() {
+//    const allExpenses: Expenses = yield call(getAllExpenses);
+//    yield put(setExpensesList(allExpenses));
 // }
 
 // export function* rootThemeSaga() {
-//   yield all([takeEvery(TOGGLE_THEME, toggleTheme)]);
+//   yield all([
+//      takeEvery(ADD_NEW_EXPENSE, postNewExpense), 
+//      takeEvery(GET_ALL_EXPENSE, getAllExpenses)
+//  ]);
 // }
  export {};

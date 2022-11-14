@@ -4,15 +4,16 @@ import { useSelector } from 'react-redux';
 import ExpenseItem from './ExpenseItem';
 import { getCurrentExpenses } from '../redux/expenses/selectors';
 import '../styles/ExpenseList.scss';
+import { Link } from 'react-router-dom';
 
 const ExpenseList = () => {
 
-    // const expenses = useSelector(getCurrentExpenses);
-const expenses = [
-    {id: 1, name: 'coffee', price: '2', category: 'restaurant'},
-    {id: 2, name: 'apples', price: '6', category: 'grocery'},
-    {id: 3, name: 'book', price: '12', category: 'shopping'},
-]
+const expenses = useSelector(getCurrentExpenses);
+// const expenses = [
+//     {id: 1, name: 'coffee', price: '2', category: 'restaurant'},
+//     {id: 2, name: 'apples', price: '6', category: 'grocery'},
+//     {id: 3, name: 'book', price: '12', category: 'shopping'},
+// ]
 
 const totalPrice = expenses.reduce((acc, next) => acc + parseInt(next.price), 0);
 
@@ -32,7 +33,7 @@ const totalPrice = expenses.reduce((acc, next) => acc + parseInt(next.price), 0)
                         category={item.category}
                     />)}
             </ul>
-            <button className='expense-list__btn expense-list__btn--add'>+</button>
+            <Link to='/add-new' className='expense-list__btn expense-list__btn--add'>+</Link>
         </div>
     )
 }

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+
 import ExpenseList from '../components/ExpenseList';
 import '../styles/MainPage.scss';
 
@@ -11,8 +13,8 @@ export default function MainPage() {
       </div>
       <div className='main-page__text-container'>
         <h1 className='main-page__title'>APP NAME</h1>
-        <p className='main-page__app-descr'>Start tracking your expenses and keep your budget under control</p>
-        <button className='main-page__start-btn'>Add new expense</button>
+        <p className='main-page__app-descr'>Start tracking your expenses and save money</p>
+        <Link to='/add-new' className='main-page__start-btn'>Add new expense</Link>
       </div>
     </div>
   );

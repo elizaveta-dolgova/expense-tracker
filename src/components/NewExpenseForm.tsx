@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import InputField from './InputField';
 import SelectCategory from './SelectCategory';
@@ -18,11 +19,13 @@ export const initialFormState = {
 const NewExpenseForm = () => {
     const dispatch = useDispatch();
     const { formState, handleInputChange, resetForm } = useFormHook(initialFormState); 
+    const navigate = useNavigate();
 
     const addNewExpenseHandler = (ev:React.FormEvent<HTMLFormElement>) => {
         ev.preventDefault();
         dispatch(addNewExpense(formState));
         resetForm();
+        navigate('/recent');
     };
 
     return (

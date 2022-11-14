@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { options } from './SelectCategory';
+
 import '../styles/ExpenseItem.scss';
 
 type ExpenseItemProps = {
@@ -13,7 +13,7 @@ const ExpenseItem = (props: ExpenseItemProps) => {
 
     return (
         <li className='expense-item'>
-            <div className={`expense-item__category-img expense-item__category-img--${category}`}>
+            <div className={`expense-item__category-img expense-item__category-img--${category.toLowerCase()}`}>
             </div>
             <div className='expense-item__info'>
                 <span className='expense-item__name'>{name}</span>
