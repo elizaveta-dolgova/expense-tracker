@@ -1,6 +1,6 @@
 import type { StoreAction } from '../store';
-import type { AddNewExpenseAction } from './actions';
-import { ADD_NEW_EXPENSE } from './actions';
+import type { AddNewExpenseAction, SetExpensesListAction } from './actions';
+import { ADD_NEW_EXPENSE, SET_EXPENSES_LIST } from './actions';
 
 export type Expense = {
   name: string;
@@ -11,16 +11,23 @@ export type Expense = {
 
 export type Expenses = Expense[];
 
-function addExpense(state: Expenses, action: AddNewExpenseAction): Expenses {
-  return [...state, action.payload.expense];
+function setExpensesList(action: SetExpensesListAction): Expenses {
+  return [...action.payload.expenses];
 }
+
+// function addExpense(state: Expenses, action: AddNewExpenseAction): Expenses {
+//   return [...state, action.payload.expense];
+// }
 
 const reducer = (state: Expenses = [], action: StoreAction) => {
   const { type } = action;
 
   switch (type) {
-    case ADD_NEW_EXPENSE:
-      return addExpense(state, action as AddNewExpenseAction);
+    // case ADD_NEW_EXPENSE:
+    //   return addExpense(state, action as AddNewExpenseAction);
+    case SET_EXPENSES_LIST:
+      return setExpensesList(action as SetExpensesListAction);
+
     default:
       return state;
   }

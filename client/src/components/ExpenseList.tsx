@@ -1,13 +1,21 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ExpenseItem from './ExpenseItem';
 import { getCurrentExpenses } from '../redux/expenses/selectors';
 import '../styles/ExpenseList.scss';
 import { Link } from 'react-router-dom';
+import { getExpensesList } from '../redux/expenses/actions';
 
 const ExpenseList = () => {
+  const dispatch = useDispatch();
   const expenses = useSelector(getCurrentExpenses);
+  
+  React.useEffect(() => {
+    if (!expenses) {
+      dispatch(getExpensesList());
+    }
+  }, []);
 
   const totalPrice = expenses.reduce((acc, next) => acc + next.price, 0);
 

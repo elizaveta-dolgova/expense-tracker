@@ -1,23 +1,20 @@
-// import { all, put, select, takeEvery } from 'redux-saga/effects';
-// import { ADD_NEW_EXPENSE, SET_EXPENSES_LIST } from './actions';
-// import type { Expenses } from './reducer';
-// import { getLastExpense } from './selectors';
-// import {postNewExpense, getAllExpenses} from '../../services/api';
+import { all, call, put, takeEvery } from 'redux-saga/effects';
 
-// function* postNewExpense() {
-//  const lastExpense: Expense = yield select(getLastExpense);
-//  const response = yield call(postNewExpense, lastExpense);
-// }
+import type { Expenses } from './reducer';
+import { ADD_NEW_EXPENSE, GET_EXPENSES_LIST, setExpensesList } from './actions';
+import type { AddNewExpenseAction } from './actions';
+import { postNewExpense, getAllExpensesFromService } from '../../services/api';
 
-// function* getAllExpense() {
-//    const allExpenses: Expenses = yield call(getAllExpenses);
-//    yield put(setExpensesList(allExpenses));
-// }
+function* sendNewExpense(action: AddNewExpenseAction) {
+  const newExpense = action.payload.expense;
+  yield call(postNewExpense, newExpense);
+}
 
-// export function* rootThemeSaga() {
-//   yield all([
-//      takeEvery(ADD_NEW_EXPENSE, postNewExpense),
-//      takeEvery(GET_ALL_EXPENSE, getAllExpenses)
-//  ]);
-// }
-export {};
+function* getAllExpenses() {
+  const allExpenses: Expenses = yield call(getAllExpensesFromService);
+  yield put(setExpensesList(allExpenses));
+}
+
+export function* rootExpensesSaga() {
+  yield all([takeEvery(ADD_NEW_EXPENSE, sendNewExpense), takeEvery(GET_EXPENSES_LIST, getAllExpenses)]);
+}

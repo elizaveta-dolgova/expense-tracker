@@ -14,7 +14,8 @@ const InputField = (props: InputFieldProps) => {
   const { label, type, name, handleChange, required } = props;
   let { value } = props;
   if (value instanceof Date) {
-    value = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
+    const day = value.getDate() > 10 ? value.getDate() : '0' + value.getDate();
+    value = `${value.getFullYear()}-${value.getMonth() + 1}-${day}`;
   }
 
   return (

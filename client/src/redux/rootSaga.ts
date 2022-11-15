@@ -1,7 +1,7 @@
-// import { all, fork } from 'redux-saga/effects';
-// import { rootThemeSaga } from './expenses/sagas';
+import { all, fork } from 'redux-saga/effects';
+import { rootExpensesSaga } from './expenses/sagas';
 
-// export function* rootSaga() {
-//   yield all([fork(rootThemeSaga)]);
-// }
+export function* rootSaga() {
+  yield all([fork(rootExpensesSaga)]);
+}
 export {};

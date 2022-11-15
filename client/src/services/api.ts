@@ -1,21 +1,18 @@
 import type { Expense, Expenses } from '../redux/expenses/reducer';
 
 export const postNewExpense = async (expense: Expense) => {
-  const response = await fetch('url', {
+  const response = await fetch('http://localhost:4269', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
     },
-    body: JSON.stringify({
-      newExpense: expense,
-    }),
+    body: JSON.stringify(expense),
   });
-  const responseForPostExpense = await response.json();
-  return responseForPostExpense;
 };
 
-export const getAllExpenses = async (): Promise<Expenses> => {
-  const response = await fetch('url');
+export const getAllExpensesFromService = async (): Promise<Expenses> => {
+  const response = await fetch('http://localhost:4269');
   const expensesFromService = await response.json();
+  console.log(expensesFromService);
   return expensesFromService;
 };

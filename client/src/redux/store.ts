@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import type { Store } from 'redux';
 import logger from 'redux-logger';
 
-// import { rootSaga } from './rootSaga';
+import { rootSaga } from './rootSaga';
 import type { RootState } from './rootReducer';
 import { rootReducer } from './rootReducer';
 
@@ -22,9 +22,9 @@ export const getStore = (): Store<RootState, StoreAction> => {
   const sagaMiddleware = createSagaMiddleware();
   store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger));
 
-  //   if (sagaMiddleware) {
-  //     sagaMiddleware.run(rootSaga);
-  //   }
+  if (sagaMiddleware) {
+    sagaMiddleware.run(rootSaga);
+  }
 
   return store;
 };
