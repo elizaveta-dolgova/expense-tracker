@@ -8,7 +8,7 @@ import { useFormHook } from '../hooks/formHook';
 import { addNewExpense } from '../redux/expenses/actions';
 import '../styles/NewExpenseForm.scss';
 
-export const initialFormState = {
+export const INITIAL_FORM_STATE = {
   name: '',
   price: 0,
   category: '',
@@ -17,14 +17,16 @@ export const initialFormState = {
 
 const NewExpenseForm = () => {
   const dispatch = useDispatch();
-  const { formState, handleInputChange, handleButtonClick, resetForm, error } = useFormHook(initialFormState);
+  const { formState, handleInputChange, handleButtonClick, resetForm, error } = useFormHook(INITIAL_FORM_STATE);
   const navigate = useNavigate();
 
   const addNewExpenseHandler = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    dispatch(addNewExpense(formState));
-    resetForm();
-    navigate('/recent');
+    if (Object.keys(error).length === 0) {
+      dispatch(addNewExpense(formState));
+      resetForm();
+      navigate('/recent');
+    }
   };
 
   return (
@@ -44,19 +46,20 @@ const NewExpenseForm = () => {
           type="number"
           name="price"
           handleChange={handleInputChange}
-          value={formState.price}
+          value={formState.price > 0 ? formState.price : ''}
           required={true}
         />
-        {error && <p>Please enter a number</p>}
+        {error?.priceError && <p>{error.priceError}</p>}
         <InputField
           label="Date"
           type="date"
           name="date"
           handleChange={handleInputChange}
-          // value={formState.date}
+          value={formState.date ? formState.date : ''}
           required={true}
         />
-        <SelectCategory name="category" handleChange={handleButtonClick} />
+        {error?.dateError && <p>{error.dateError}</p>}
+        <SelectCategory name="category" handleChange={handleButtonClick} selectedCategory={formState.category} />
         <button className="new-expense__addBtn">Add</button>
       </form>
     </div>

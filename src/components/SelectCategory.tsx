@@ -4,7 +4,7 @@ import '../styles/SelectCategory.scss';
 export enum Category {
   RESTAURANTS = 'Restaurants',
   GROCERY = 'Grocery',
-  TRAVELING = 'Traveling',
+  TRAVELLING = 'Travelling',
   TRANSPORT = 'Transport',
   MEDICINE = 'Medicine',
   PETS = 'Pets',
@@ -13,10 +13,10 @@ export enum Category {
   OTHER = 'Other',
 }
 
-export const options = [
+export const CATEGORY_OPTIONS = [
   Category.RESTAURANTS,
   Category.GROCERY,
-  Category.TRAVELING,
+  Category.TRAVELLING,
   Category.TRANSPORT,
   Category.MEDICINE,
   Category.PETS,
@@ -28,17 +28,18 @@ export const options = [
 type SelectCategoryProps = {
   handleChange: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   name: string;
+  selectedCategory?: string;
 };
 
 function SelectCategory(props: SelectCategoryProps) {
-  const { handleChange, name } = props;
+  const { handleChange, name, selectedCategory } = props;
 
   return (
     <div>
       <span>Select category</span>
       <div className="category-container">
-        {options.map((item, index) => (
-          <div className="category" key={index}>
+        {CATEGORY_OPTIONS.map((item, index) => (
+          <div className={`category${selectedCategory === item ? ' category--selected' : ''}`} key={index}>
             <button
               className={`category-btn category-btn--${item.toLowerCase()}`}
               value={item}

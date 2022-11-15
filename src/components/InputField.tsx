@@ -6,12 +6,16 @@ type InputFieldProps = {
   type: string;
   name: string;
   handleChange: (ev: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string | number;
+  value: string | number | Date;
   required: boolean;
 };
 
 const InputField = (props: InputFieldProps) => {
-  const { label, type, name, handleChange, value, required } = props;
+  const { label, type, name, handleChange, required } = props;
+  let { value } = props;
+  if (value instanceof Date) {
+    value = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
+  }
 
   return (
     <div className="input-filed">

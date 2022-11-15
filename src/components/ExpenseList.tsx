@@ -8,11 +8,6 @@ import { Link } from 'react-router-dom';
 
 const ExpenseList = () => {
   const expenses = useSelector(getCurrentExpenses);
-  // const expenses = [
-  //     {id: 1, name: 'coffee', price: '2', category: 'restaurant'},
-  //     {id: 2, name: 'apples', price: '6', category: 'grocery'},
-  //     {id: 3, name: 'book', price: '12', category: 'shopping'},
-  // ]
 
   const totalPrice = expenses.reduce((acc, next) => acc + next.price, 0);
 

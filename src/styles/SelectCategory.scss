@@ -11,7 +11,12 @@
   flex-direction: column;
   align-items: center;
   width: 33%;
+
+  &--selected {
+    border: solid 1px purple;
+  }
 }
+
 .category-btn {
   margin: 10px 0;
   background-color: transparent;
@@ -36,7 +41,7 @@
   &--grocery {
     background-image: url('../../public/images/grocery.png');
   }
-  &--traveling {
+  &--travelling {
     background-image: url('../../public/images/traveling.png');
   }
   &--transport {
