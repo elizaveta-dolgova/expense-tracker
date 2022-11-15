@@ -1,0 +1,5 @@
+# Installed NodeJS packages
+node_modules
+
+# Build
+dist

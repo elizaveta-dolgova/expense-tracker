@@ -1,0 +1,32 @@
+{
+  "name": "expense-tracker-server",
+  "version": "1.0.0",
+  "description": "Backend server for the Expense Tracker App",
+  "main": "src/main.ts",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "npx tsc --project ./tsconfig.json",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix",
+    "prettier": "npx prettier --config .prettierrc.js --check .",
+    "prettier:fix": "npx prettier --config .prettierrc.js --write .",
+    "start": "npx ts-node --project ./tsconfig.json ./src/main.ts",
+    "start:build": "node ./dist/main.js"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.18.2"
+  },
+  "devDependencies": {
+    "@foxmedia/eslint-config": "git+ssh://git@gitlab.com:foxmedia/eslint-config.git",
+    "@foxmedia/prettier-config": "git+ssh://git@gitlab.com:foxmedia/prettier-config.git",
+    "@types/cors": "2.8.12",
+    "@types/express": "4.17.14",
+    "eslint": "8.27.0",
+    "jest": "29.3.1",
+    "prettier": "2.7.1",
+    "ts-node": "10.9.1",
+    "typescript": "4.8.4"
+  }
+}
