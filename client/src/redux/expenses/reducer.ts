@@ -1,6 +1,6 @@
 import type { StoreAction } from '../store';
-import type { AddNewExpenseAction, SetExpensesListAction } from './actions';
-import { ADD_NEW_EXPENSE, SET_EXPENSES_LIST } from './actions';
+import { AddNewExpenseAction, ApiRequestFailed, CLEAN_ERRORS, GET_EXPENSES_LIST, SetExpensesListAction, SET_ALREADY_FETCHED } from './actions';
+import { API_REQUEST_FAILED, ADD_NEW_EXPENSE_LOCAL, SET_EXPENSES_LIST } from './actions';
 
 export type Expense = {
   name: string;
@@ -11,22 +11,51 @@ export type Expense = {
 
 export type Expenses = Expense[];
 
-function setExpensesList(action: SetExpensesListAction): Expenses {
-  return [...action.payload.expenses];
+export type ExpensesState = {
+  expenses: Expenses;
+  alreadyFetched: boolean;
+  error: string | null;
+};
+
+const initialState: ExpensesState = {
+  expenses: [],
+  alreadyFetched: false,
+  error: null,
+};
+
+function setExpensesList(state: ExpensesState, action: SetExpensesListAction): ExpensesState {
+  return { ...state, expenses: [...state.expenses, ...action.payload.expenses] };
 }
 
-// function addExpense(state: Expenses, action: AddNewExpenseAction): Expenses {
-//   return [...state, action.payload.expense];
-// }
+function addExpenseLocal(state: ExpensesState, action: AddNewExpenseAction): ExpensesState {
+  return { ...state, expenses: [...state.expenses, action.payload.expense] };
+}
 
-const reducer = (state: Expenses = [], action: StoreAction) => {
+function apiRequestFaild(state: ExpensesState, action: ApiRequestFailed): ExpensesState {
+  return { ...state, error: action.payload.error as string };
+}
+
+const reducer = (state: ExpensesState = initialState, action: StoreAction) => {
   const { type } = action;
 
   switch (type) {
-    // case ADD_NEW_EXPENSE:
-    //   return addExpense(state, action as AddNewExpenseAction);
+    case ADD_NEW_EXPENSE_LOCAL:
+      return addExpenseLocal(state, action as AddNewExpenseAction);
+
+    case SET_ALREADY_FETCHED:
+        return {
+          ...state,
+          alreadyFetched: true,
+        };
+
     case SET_EXPENSES_LIST:
-      return setExpensesList(action as SetExpensesListAction);
+      return setExpensesList(state, action as SetExpensesListAction);
+
+    case API_REQUEST_FAILED:
+      return apiRequestFaild(state, action as ApiRequestFailed);
+    
+    case CLEAN_ERRORS:
+      return {...state, error: null};
 
     default:
       return state;

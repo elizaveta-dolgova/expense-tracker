@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import { FormPage, MainPage, ListPage } from './screens';
 import '../src/styles/Main.scss';
+import { getStore } from './redux/store';
+import { testDelay } from './redux/expenses/actions';
 
 const App = () => {
   return (

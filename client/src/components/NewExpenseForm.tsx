@@ -43,7 +43,7 @@ const NewExpenseForm = () => {
         />
         <InputField
           label="How much did you spend?"
-          type="number"
+          type="text"
           name="price"
           handleChange={handleInputChange}
           value={formState.price > 0 ? formState.price : ''}

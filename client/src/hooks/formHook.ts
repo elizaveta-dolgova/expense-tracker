@@ -12,11 +12,11 @@ const dateIsInvalid = (date: Date) => {
 export const useFormHook = (initialState: Expense) => {
   const [formState, setFormState] = useState<Expense>(initialState);
   const [error, setError] = useState<Error>({});
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.name) {
-      case 'price':
-        if (isNaN(parseInt(e.target.value))) {
+      case 'price': {
+        const regex = /^[0-9]+$/;
+        if (!e.target.value.match(regex) && e.target.value !== '') {
           return setError({ ...error, priceError: 'should be a number' });
         } else {
           if (error.priceError) {
@@ -26,7 +26,7 @@ export const useFormHook = (initialState: Expense) => {
           }
           return setFormState({ ...formState, price: parseInt(e.target.value) });
         }
-
+      }
       case 'date':
         if (dateIsInvalid(new Date(e.target.value))) {
           return setError({ ...error, dateError: 'invalid date' });
