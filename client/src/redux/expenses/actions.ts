@@ -1,13 +1,11 @@
 import type { Expense, Expenses } from '../expenses/reducer';
 export const ADD_NEW_EXPENSE = '@expenses/ADD_NEW_EXPENSE';
-export const ADD_NEW_EXPENSE_LOCAL = 'ADD_NEW_EXPENSE_LOCAL';
-export const SET_EXPENSES_LIST = 'SET_EXPENSES_LIST';
-export const GET_EXPENSES_LIST = 'GET_EXPENSES_LIST';
-export const API_REQUEST_FAILED = 'FETCH_REQUEST_FAILED';
-export const CLEAN_ERRORS = 'CLEAN_ERRORS';
-export const SET_ALREADY_FETCHED = 'SET_ALREADY_FETCHED';
+export const ADD_NEW_EXPENSE_LOCAL = '@expenses/ADD_NEW_EXPENSE_LOCAL';
+export const SET_EXPENSES_LIST = '@expenses/SET_EXPENSES_LIST';
+export const GET_EXPENSES_LIST = '@expenses/GET_EXPENSES_LIST';
+export const SET_ALREADY_FETCHED = '@expenses/SET_ALREADY_FETCHED';
 
-export const TEST_DELAY = 'TEST_DELAY';
+export const TEST_DELAY = '@expenses/TEST_DELAY';
 
 export const addNewExpense = (expense: Expense) => ({
   type: ADD_NEW_EXPENSE,
@@ -41,21 +39,6 @@ export const setExpensesList = (expenses: Expenses) => ({
 });
 
 export type SetExpensesListAction = ReturnType<typeof setExpensesList>;
-
-export const apiRequestFailed = (message: string) => ({
-  type: API_REQUEST_FAILED,
-  payload: {
-    error: message,
-  },
-});
-
-export type ApiRequestFailed = ReturnType<typeof apiRequestFailed>;
-
-export const cleanErrors = () => ({
-  type: CLEAN_ERRORS,
-});
-
-export type CleanErrors = ReturnType<typeof cleanErrors>;
 
 export const setAlreadyFetched = () => ({
   type: SET_ALREADY_FETCHED,

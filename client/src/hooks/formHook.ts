@@ -15,17 +15,18 @@ export const useFormHook = (initialState: Expense) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.name) {
       case 'price': {
-        const regex = /^[0-9]+$/;
-        if (!e.target.value.match(regex) && e.target.value !== '') {
-          return setError({ ...error, priceError: 'should be a number' });
+        const regexp = /[0-9]+\.?[0-9]*/;
+        if (!e.target.value.match(regexp) && e.target.value !== '') {
+          setError({ ...error, priceError: 'should be a number' });
         } else {
           if (error.priceError) {
             const newError = { ...error };
             delete newError.priceError;
             setError(newError);
           }
-          return setFormState({ ...formState, price: parseInt(e.target.value) });
         }
+        setFormState({ ...formState, price: parseFloat(e.target.value) || 0 });
+        break;
       }
       case 'date':
         if (dateIsInvalid(new Date(e.target.value))) {

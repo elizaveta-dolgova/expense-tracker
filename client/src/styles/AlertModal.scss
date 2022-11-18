@@ -1,0 +1,53 @@
+.alert-container {
+  display: none;
+  position: absolute;
+  border-radius: 10px;
+  width: 250px;
+  top: 80%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 7px 8px 10px 2px rgba(112, 105, 105, 0.65);
+
+  &--active {
+    display: block;
+  }
+
+  &__content {
+    position: relative;
+    padding: 20px 20px;
+  }
+
+  &__text {
+    margin-bottom: 5px;
+
+    &--error {
+      color: red;
+    }
+    &--success {
+      color: green;
+    }
+  }
+
+  &__btn {
+    border: none;
+    color: black;
+    background-color: transparent;
+    font-size: 16px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+@media (min-width: 750px) {
+  .alert-container {
+    top: 90%;
+    left: 80%;
+  }
+}
+@media (min-width: 1200px) {
+  .alert-container {
+    top: 90%;
+    left: 88%;
+  }
+}

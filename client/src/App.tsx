@@ -3,8 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { FormPage, MainPage, ListPage } from './screens';
 import '../src/styles/Main.scss';
-import { getStore } from './redux/store';
-import { testDelay } from './redux/expenses/actions';
+import AlertModal from './components/AlertModal';
 
 const App = () => {
   return (
@@ -14,6 +13,7 @@ const App = () => {
         <Route path="add-new" element={<FormPage />} />
         <Route path="recent" element={<ListPage />} />
       </Routes>
+      <AlertModal />
     </>
   );
 };
