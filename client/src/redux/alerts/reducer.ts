@@ -29,16 +29,16 @@ const alertInitialState: AlertState = {
 function setError(state: AlertState, action: SetErrorAction): AlertState {
   return {
     ...state,
-    counter: state.counter++,
-    error: [...state.error, { message: action.payload.error, id: state.counter, expired: 6000 }],
+    counter: state.counter + 1,
+    error: [...state.error, { message: action.payload.error, id: state.counter, expired: 5000 }],
   };
 }
 
 function setSuccess(state: AlertState, action: SetSuccessAction): AlertState {
   return {
     ...state,
-    counter: state.counter++,
-    success: [...state.success, { message: action.payload.message, id: state.counter, expired: 6000 }],
+    counter: state.counter + 1,
+    success: [...state.success, { message: action.payload.message, id: state.counter, expired: 5000 }],
   };
 }
 

@@ -10,6 +10,8 @@ const AlertModal = () => {
   const [errorId, setErrorId] = useState(0);
   const [successId, setSuccessId] = useState(0);
 
+
+
   return (
     <div className={`alert-container ${error.length || success.length ? 'alert-container--active' : ''} `}>
       {error.length !== 0 && (

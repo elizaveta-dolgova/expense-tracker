@@ -3,22 +3,21 @@ import { SET_ERROR, SET_SUCCESS, cleanAlertById as cleanAlert } from './actions'
 import type { AlertState, Error, Success } from './reducer';
 import { getCurrentAlerts } from './selectors';
 
-function* cleanAlertById(item: Error | Success, field: 'error' | 'success') {
-  yield delay(item.expired);
-  yield put(cleanAlert(field, item.id));
-}
-
 function* setErrorAlert() {
-  const alerts: AlertState = yield select(getCurrentAlerts);
-  if (alerts.error.length !== 0) {
-    alerts.error.forEach((item) => cleanAlertById(item, 'error'));
+  const { error }: AlertState = yield select(getCurrentAlerts);
+  if (error.length !== 0) {
+    const actualError = error[error.length - 1];
+    yield delay(actualError.expired);
+    yield put(cleanAlert('error', actualError.id))
   }
 }
 
 function* setSuccessAlert() {
-  const alerts: AlertState = yield select(getCurrentAlerts);
-  if (alerts.success.length !== 0) {
-    alerts.success.forEach((item) => cleanAlertById(item, 'success'));
+  const { success }: AlertState = yield select(getCurrentAlerts);
+  if (success.length !== 0) {
+    const actualSuccess = success[success.length - 1];
+    yield delay(actualSuccess.expired);
+    yield put(cleanAlert('error', actualSuccess.id))
   }
 }
 
