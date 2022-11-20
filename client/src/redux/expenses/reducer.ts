@@ -30,7 +30,6 @@ function addExpenseLocal(state: ExpensesState, action: AddNewExpenseAction): Exp
 }
 
 const reducer = (state: ExpensesState = initialState, action: StoreAction) => {
-  console.log(state);
   const { type } = action;
 
   switch (type) {
